@@ -2,7 +2,15 @@
 ### A challenge from Waracle.
 API for finding available hotels, rooms and creating/referencing bookings.
 
-# Tech Overview
+## How to run
+* Open VS or Rider
+* Restore nuget packages
+* create SQLite DB
+  * ```dotnet ef migrations add InitialCreate```
+  * ```dotnet ef database update```
+* Run in IDE for Swagger UI
+
+## Tech Overview
 > ASP.Net 8.0 API with Swagger UI
 
 * Entity Framework 8.0 for Database mapping
@@ -12,8 +20,3 @@ API for finding available hotels, rooms and creating/referencing bookings.
 
 ### Database Schema
 ![DB Schema](docs/schema.png)
-
-## How to run
-* Open .sln in VS studio or Rider
-* Restore nuget packages
-* Run in IDE for Swagger UI
