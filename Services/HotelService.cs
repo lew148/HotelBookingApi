@@ -1,4 +1,5 @@
 ﻿using HotelBookingApi.Models;
+using HotelBookingApi.Repositories;
 
 namespace HotelBookingApi.Services;
 
@@ -9,6 +10,10 @@ public interface IHotelService
 
 public class HotelService : IHotelService
 {
+    private readonly IHotelsRepository _repo;
+
+    public HotelService(IHotelsRepository repo) => _repo = repo;
+
     private static readonly string[] Names =
     [
         "Grandview Hotel",
@@ -18,5 +23,5 @@ public class HotelService : IHotelService
         "Golden Sands Retreat"
     ];
 
-    public List<Hotel> GetHotels() => Names.Select(n => new Hotel { Name = n }).ToList();
+    public List<Hotel> GetHotels() => _repo.GetAll();
 }
