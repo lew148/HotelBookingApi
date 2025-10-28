@@ -1,4 +1,5 @@
 ﻿using HotelBookingApi.DTOs;
+using HotelBookingApi.Models;
 using HotelBookingApi.Repositories;
 
 namespace HotelBookingApi.Services;
@@ -10,6 +11,8 @@ public interface IBookingsService
         DateTime checkOut,
         int numberOfGuests,
         PrimaryGuestInfo primaryGuestInfo);
+
+    Booking? GetBookingByReference(string reference);
 }
 
 public class BookingsService : IBookingsService
@@ -41,4 +44,6 @@ public class BookingsService : IBookingsService
         var booking = _bookingsRepo.AddBooking(bookingReference, roomId, guestInfo.Id, checkIn, checkOut, numberOfGuests);
         return booking == null ? (false, "Failed to create booking.") : (true, booking.BookingReference);
     }
+
+    public Booking? GetBookingByReference(string reference) => _bookingsRepo.GetBookingByReference(reference);
 }
