@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HotelBookingApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/data")]
 public class DataController
 {
     private readonly IDataRepository _dataRepository;
