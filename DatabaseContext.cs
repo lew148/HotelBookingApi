@@ -11,5 +11,5 @@ public class DatabaseContext : DbContext
     public DbSet<Hotel> Hotels => Set<Hotel>();
     public DbSet<Room> Rooms => Set<Room>();
     public DbSet<Booking> Bookings => Set<Booking>();
-    public DbSet<PrimaryGuest> Guests => Set<PrimaryGuest>();
+    public DbSet<PrimaryGuest> PrimaryGuests => Set<PrimaryGuest>();
 }

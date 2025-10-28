@@ -10,12 +10,12 @@ public class HotelController : ControllerBase
 {
     private readonly IHotelService _hotelService;
     
-    public HotelController(ILogger<HotelController> logger, IHotelService hotelService)
+    public HotelController(IHotelService hotelService)
     {
         _hotelService = hotelService;
     }
     
-    [HttpGet(Name = "GetHotels")]
+    [HttpGet("GetHotels")]
     public List<Hotel> GetHotels()
     {
         return _hotelService.GetHotels();
