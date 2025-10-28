@@ -1,4 +1,4 @@
-using HotelBookingApi.Common;
+using HotelBookingApi.DTOs;
 using HotelBookingApi.Models;
 using HotelBookingApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,11 +7,11 @@ namespace HotelBookingApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class HotelController : ControllerBase
+public class HotelsController : ControllerBase
 {
     private readonly IHotelService _hotelService;
 
-    public HotelController(IHotelService hotelService)
+    public HotelsController(IHotelService hotelService)
     {
         _hotelService = hotelService;
     }

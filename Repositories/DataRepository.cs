@@ -40,10 +40,10 @@ public class DataRepository : Repository, IDataRepository
 
             new Room { HotelId = hotels[1].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[1].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[1].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
 
             new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },

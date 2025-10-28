@@ -1,4 +1,4 @@
-﻿namespace HotelBookingApi.Common;
+﻿namespace HotelBookingApi.DTOs;
 
 public class ApiResponse
 {

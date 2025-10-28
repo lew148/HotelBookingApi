@@ -17,9 +17,11 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IHotelService, HotelService>();
+builder.Services.AddScoped<IRoomsService, RoomsService>();
 
 builder.Services.AddScoped<IHotelsRepository, HotelsRepository>();
 builder.Services.AddScoped<IDataRepository, DataRepository>();
+builder.Services.AddScoped<IRoomsRepository, RoomsRepository>();
 
 var app = builder.Build();
 app.UseSwagger();
