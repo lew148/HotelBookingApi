@@ -1,4 +1,5 @@
-﻿using HotelBookingApi.Models;
+﻿using HotelBookingApi.Common;
+using HotelBookingApi.Models;
 
 namespace HotelBookingApi.Repositories;
 

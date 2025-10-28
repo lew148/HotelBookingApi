@@ -1,7 +1,7 @@
 ﻿using HotelBookingApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelBookingApi;
+namespace HotelBookingApi.Common;
 
 public class DatabaseContext : DbContext
 {

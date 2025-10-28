@@ -1,4 +1,6 @@
-﻿public class ErrorHandler
+﻿namespace HotelBookingApi.Common;
+
+public class ErrorHandler
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ErrorHandler> _logger;

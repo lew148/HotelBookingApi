@@ -5,7 +5,9 @@ namespace HotelBookingApi.Services;
 
 public interface IHotelService
 {
-    public List<Hotel> GetHotels();
+    public List<Hotel> GetAllHotels();
+    
+    Hotel? GetHotelByName(string name);
 }
 
 public class HotelService : IHotelService
@@ -14,5 +16,7 @@ public class HotelService : IHotelService
 
     public HotelService(IHotelsRepository repo) => _repo = repo;
     
-    public List<Hotel> GetHotels() => _repo.GetAll();
+    public List<Hotel> GetAllHotels() => _repo.GetAllHotels();
+    
+    public Hotel? GetHotelByName(string name) => _repo.GetHotelByName(name);
 }

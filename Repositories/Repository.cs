@@ -1,4 +1,6 @@
-﻿namespace HotelBookingApi.Repositories;
+﻿using HotelBookingApi.Common;
+
+namespace HotelBookingApi.Repositories;
 
 public abstract class Repository
 {

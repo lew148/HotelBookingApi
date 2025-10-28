@@ -1,4 +1,4 @@
-﻿namespace HotelBookingApi;
+﻿namespace HotelBookingApi.Common;
 
 public enum RoomType {
     Single,
