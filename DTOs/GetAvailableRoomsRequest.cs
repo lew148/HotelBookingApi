@@ -1,6 +1,6 @@
 ﻿namespace HotelBookingApi.DTOs;
 
-public class GetAvailableRooms
+public class GetAvailableRoomsRequest
 {
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }

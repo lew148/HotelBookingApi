@@ -9,20 +9,20 @@ namespace HotelBookingApi.Controllers;
 [Route("[controller]")]
 public class HotelsController : ControllerBase
 {
-    private readonly IHotelService _hotelService;
+    private readonly IHotelsService _hotelsService;
 
-    public HotelsController(IHotelService hotelService)
+    public HotelsController(IHotelsService hotelsService)
     {
-        _hotelService = hotelService;
+        _hotelsService = hotelsService;
     }
 
     [HttpGet("GetAllHotels")]
-    public ApiResponse<List<Hotel>> GetAllHotels() => ApiResponse<List<Hotel>>.Successful(_hotelService.GetAllHotels());
+    public ApiResponse GetAllHotels() => ApiResponse<List<Hotel>>.Successful(_hotelsService.GetAllHotels());
 
     [HttpGet("GetHotel/{name}")]
     public ApiResponse GetHotel(string name)
     {
-        var hotel = _hotelService.GetHotelByName(name);
+        var hotel = _hotelsService.GetHotelByName(name);
         return hotel is null
             ? ApiResponse.Failure("Hotel not found")
             : ApiResponse<Hotel>.Successful(hotel);

@@ -1,4 +1,5 @@
-﻿using HotelBookingApi.Repositories;
+﻿using HotelBookingApi.DTOs;
+using HotelBookingApi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelBookingApi.Controllers;
@@ -15,8 +16,14 @@ public class DataController
     }
 
     [HttpGet("SeedDatabase")]
-    public bool SeedDatabase() => _dataRepository.SeedDatabase();
+    public ApiResponse SeedDatabase() =>
+        _dataRepository.SeedDatabase()
+            ? ApiResponse.Successful("Database successfully seeded")
+            : ApiResponse.Failure("Failed to seed database");
 
     [HttpGet("ResetDatabase")]
-    public bool ResetDatabase() => _dataRepository.ResetDatabase();
+    public ApiResponse ResetDatabase() =>
+        _dataRepository.ResetDatabase()
+            ? ApiResponse.Successful("Database successfully reset")
+            : ApiResponse.Failure("Failed to reset database");
 }

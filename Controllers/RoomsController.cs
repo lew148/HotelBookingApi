@@ -15,8 +15,23 @@ public class RoomsController : ControllerBase
     }
 
     [HttpGet("AvailableRooms")]
-    public ApiResponse<List<Room>> GetAvailableRooms([FromQuery] GetAvailableRooms request) =>
+    public ApiResponse GetAvailableRooms([FromQuery] GetAvailableRoomsRequest request) =>
         ApiResponse<List<Room>>.Successful(_roomService.GetAvailableRooms(request.StartDate,
             request.EndDate,
             request.NumberOfGuests));
+
+    [HttpPost("BookRoom")]
+    public ApiResponse BookRoom([FromBody] BookRoomRequest request)
+    {
+        var bookingResult =
+            _roomService.BookRoom(request.RoomId,
+                request.CheckIn,
+                request.CheckOut,
+                request.NumberOfGuests,
+                request.PrimaryGuestInfo);
+
+        return bookingResult.Item1 && !string.IsNullOrWhiteSpace(bookingResult.Item2)
+            ? ApiResponse<string>.Successful(bookingResult.Item2)
+            : ApiResponse.Failure(bookingResult.Item2 ?? "Booking failed. Please try again later.");
+    }
 }

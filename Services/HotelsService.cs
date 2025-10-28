@@ -3,18 +3,17 @@ using HotelBookingApi.Repositories;
 
 namespace HotelBookingApi.Services;
 
-public interface IHotelService
+public interface IHotelsService
 {
     public List<Hotel> GetAllHotels();
-    
     Hotel? GetHotelByName(string name);
 }
 
-public class HotelService : IHotelService
+public class HotelsService : IHotelsService
 {
     private readonly IHotelsRepository _repo;
 
-    public HotelService(IHotelsRepository repo) => _repo = repo;
+    public HotelsService(IHotelsRepository repo) => _repo = repo;
     
     public List<Hotel> GetAllHotels() => _repo.GetAllHotels();
     

@@ -1,4 +1,3 @@
-using HotelBookingApi;
 using HotelBookingApi.Common;
 using HotelBookingApi.Repositories;
 using HotelBookingApi.Services;
@@ -16,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IHotelService, HotelService>();
+builder.Services.AddScoped<IHotelsService, HotelsService>();
 builder.Services.AddScoped<IRoomsService, RoomsService>();
 
 builder.Services.AddScoped<IHotelsRepository, HotelsRepository>();

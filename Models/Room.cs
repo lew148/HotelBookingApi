@@ -8,4 +8,6 @@ public class Room : DatabaseModel
     public Hotel Hotel { get; set; }
 
     public RoomType Type { get; set; }
+    
+    public List<Booking> Bookings { get; set; }
 }

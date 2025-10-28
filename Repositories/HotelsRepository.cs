@@ -7,7 +7,6 @@ namespace HotelBookingApi.Repositories;
 public interface IHotelsRepository
 {
     List<Hotel> GetAllHotels();
-
     Hotel? GetHotelByName(string name);
 }
 
