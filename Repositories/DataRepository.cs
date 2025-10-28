@@ -10,9 +10,7 @@ public interface IDataRepository
 
 public class DataRepository : Repository, IDataRepository
 {
-    public DataRepository(DatabaseContext context) : base(context)
-    {
-    }
+    public DataRepository(DatabaseContext context) : base(context) { }
 
     public bool SeedDatabase()
     {
@@ -26,32 +24,34 @@ public class DataRepository : Repository, IDataRepository
             new Hotel { Name = "Seaside Resort", CreatedAt = now, UpdatedAt = now },
             new Hotel { Name = "Elm Grove Inn", CreatedAt = now, UpdatedAt = now }
         };
+        
         Context.Hotels.AddRange(hotels);
         Context.SaveChanges();
 
         var rooms = new List<Room>
         {
             new Room { HotelId = hotels[0].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[0].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[0].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[0].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[0].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[0].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[0].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[0].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[0].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
 
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[1].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[1].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[1].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
 
+            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
+            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[2].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[2].Id, Type = RoomType.Double, CreatedAt = now, UpdatedAt = now },
             new Room { HotelId = hotels[2].Id, Type = RoomType.Deluxe, CreatedAt = now, UpdatedAt = now },
-            new Room { HotelId = hotels[2].Id, Type = RoomType.Single, CreatedAt = now, UpdatedAt = now },
         };
+        
         Context.Rooms.AddRange(rooms);
         Context.SaveChanges();
 
@@ -91,6 +91,7 @@ public class DataRepository : Repository, IDataRepository
                 UpdatedAt = now
             }
         };
+        
         Context.PrimaryGuests.AddRange(guests);
         Context.SaveChanges();
 
@@ -103,29 +104,29 @@ public class DataRepository : Repository, IDataRepository
                 CheckIn = new DateTime(2025, 4, 6),
                 CheckOut = new DateTime(2025, 4, 8),
                 BookingReference = "GP-0001",
-                GuestCount = 2,
+                GuestCount = 1,
                 CreatedAt = now,
                 UpdatedAt = now
             },
             new Booking
             {
-                RoomId = rooms[1].Id,
+                RoomId = rooms[9].Id,
                 PrimaryGuestId = guests[1].Id,
                 CheckIn = new DateTime(2025, 10, 28),
                 CheckOut = new DateTime(2025, 10, 30),
-                BookingReference = "GP-0002",
+                BookingReference = "SR-0002",
                 GuestCount = 3,
                 CreatedAt = now,
                 UpdatedAt = now
             },
             new Booking
             {
-                RoomId = rooms[2].Id,
+                RoomId = rooms[15].Id,
                 PrimaryGuestId = guests[2].Id,
                 CheckIn = new DateTime(2026, 2, 11),
                 CheckOut = new DateTime(2026, 2, 14),
-                BookingReference = "SR-1001",
-                GuestCount = 1,
+                BookingReference = "EGI-1001",
+                GuestCount = 2,
                 CreatedAt = now,
                 UpdatedAt = now
             }
@@ -139,7 +140,6 @@ public class DataRepository : Repository, IDataRepository
     public bool ResetDatabase()
     {
         Context.Bookings.RemoveRange(Context.Bookings);
-        // Context.SaveChanges();
         Context.Rooms.RemoveRange(Context.Rooms);
         Context.PrimaryGuests.RemoveRange(Context.PrimaryGuests);
         Context.Hotels.RemoveRange(Context.Hotels);
