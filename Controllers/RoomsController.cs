@@ -21,8 +21,10 @@ public class RoomsController : ControllerBase
             request.NumberOfGuests));
 
     [HttpPost("BookRoom")]
-    public ApiResponse BookRoom([FromBody] BookRoomRequest request)
+    public ApiResponse BookRoom([FromBody] BookRoomRequest? request)
     {
+        if (request == null) return ApiResponse.Failure("Bad request.");
+        
         var bookingResult =
             _roomService.BookRoom(request.RoomId,
                 request.CheckIn,

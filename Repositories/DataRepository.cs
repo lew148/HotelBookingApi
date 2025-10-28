@@ -104,7 +104,7 @@ public class DataRepository : Repository, IDataRepository
                 PrimaryGuestId = guests[0].Id,
                 CheckIn = new DateTime(2025, 4, 6),
                 CheckOut = new DateTime(2025, 4, 8),
-                BookingReference = "GP-0001",
+                BookingReference = "11111111",
                 GuestCount = 1,
                 CreatedAt = now,
                 UpdatedAt = now
@@ -115,7 +115,7 @@ public class DataRepository : Repository, IDataRepository
                 PrimaryGuestId = guests[1].Id,
                 CheckIn = new DateTime(2025, 10, 28),
                 CheckOut = new DateTime(2025, 10, 30),
-                BookingReference = "SR-0002",
+                BookingReference = "22222222",
                 GuestCount = 3,
                 CreatedAt = now,
                 UpdatedAt = now
@@ -126,7 +126,7 @@ public class DataRepository : Repository, IDataRepository
                 PrimaryGuestId = guests[2].Id,
                 CheckIn = new DateTime(2026, 2, 11),
                 CheckOut = new DateTime(2026, 2, 14),
-                BookingReference = "EGI-1001",
+                BookingReference = "33333333",
                 GuestCount = 2,
                 CreatedAt = now,
                 UpdatedAt = now

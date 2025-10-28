@@ -1,5 +1,6 @@
 using HotelBookingApi.DTOs;
 using HotelBookingApi.Models;
+using HotelBookingApi.Repositories;
 using HotelBookingApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,20 +10,20 @@ namespace HotelBookingApi.Controllers;
 [Route("[controller]")]
 public class HotelsController : ControllerBase
 {
-    private readonly IHotelsService _hotelsService;
+    private readonly IHotelsRepository _hotelsRepository;
 
-    public HotelsController(IHotelsService hotelsService)
+    public HotelsController(IHotelsRepository hotelsRepository)
     {
-        _hotelsService = hotelsService;
+        _hotelsRepository = hotelsRepository;
     }
 
     [HttpGet("GetAllHotels")]
-    public ApiResponse GetAllHotels() => ApiResponse<List<Hotel>>.Successful(_hotelsService.GetAllHotels());
+    public ApiResponse GetAllHotels() => ApiResponse<List<Hotel>>.Successful(_hotelsRepository.GetAllHotels());
 
     [HttpGet("GetHotel/{name}")]
     public ApiResponse GetHotel(string name)
     {
-        var hotel = _hotelsService.GetHotelByName(name);
+        var hotel = _hotelsRepository.GetHotelByName(name);
         return hotel is null
             ? ApiResponse.Failure("Hotel not found")
             : ApiResponse<Hotel>.Successful(hotel);

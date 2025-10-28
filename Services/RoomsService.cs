@@ -1,4 +1,5 @@
 ﻿using HotelBookingApi.Common;
+using HotelBookingApi.DTOs;
 using HotelBookingApi.Models;
 using HotelBookingApi.Repositories;
 
@@ -8,15 +9,23 @@ public interface IRoomsService
 {
     List<Room> GetAvailableRooms(DateTime startDate, DateTime endDate, int numberOfGuests);
 
-    (bool, string?) BookRoom(int roomId, DateTime checkIn, DateTime checkOut, int numberOfGuests,
-        PrimaryGuest primaryGuestInfo);
+    (bool, string?) BookRoom(int roomId,
+        DateTime checkIn,
+        DateTime checkOut,
+        int numberOfGuests,
+        PrimaryGuestInfo primaryGuestInfo);
 }
 
 public class RoomsService : IRoomsService
 {
     private readonly IRoomsRepository _repo;
+    private readonly IBookingsService _bookingsService;
 
-    public RoomsService(IRoomsRepository repo) => _repo = repo;
+    public RoomsService(IRoomsRepository repo, IBookingsService bookingsService)
+    {
+        _repo = repo;
+        _bookingsService = bookingsService;
+    }
 
     private List<RoomType> GetAvailableRoomTypesForNumberOfGuests(int numberOfGuests)
     {
@@ -37,19 +46,19 @@ public class RoomsService : IRoomsService
         DateTime checkIn,
         DateTime checkOut,
         int numberOfGuests,
-        PrimaryGuest primaryGuestInfo)
+        PrimaryGuestInfo primaryGuestInfo)
     {
         var room = _repo.GetRoomById(roomId, withBookings: true);
         if (room == null) return (false, "Room not found.");
 
-        if (room.Bookings.All(b => checkOut <= b.CheckIn || checkIn >= b.CheckOut))
-        {
-            return (false, "This room is not available for the selected dates.");
-        }
+
+        var overlapExists = !room.Bookings.All(b => checkOut <= b.CheckIn || checkIn >= b.CheckOut);
+        if (overlapExists) return (false, "This room is not available for the selected dates.");
 
         var roomTypes = GetAvailableRoomTypesForNumberOfGuests(numberOfGuests);
-        if (roomTypes.Count == 0 || !roomTypes.Contains(room.Type)) return (false, "There are too many guests for this room.");
+        if (roomTypes.Count == 0 || !roomTypes.Contains(room.Type))
+            return (false, "There are too many guests for this room.");
 
-        return (true, "");
+        return _bookingsService.CreateBooking(roomId, checkIn, checkOut, numberOfGuests, primaryGuestInfo);
     }
 }
