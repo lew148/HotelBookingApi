@@ -2,7 +2,8 @@
 ### A challenge from Waracle.
 API for finding available hotels, rooms and creating/referencing bookings.
 
-### [Click here for Project Kanban Board](https://github.com/users/lew148/projects/1)
+### [🎯 Click here for Project Kanban Board](https://github.com/users/lew148/projects/1)
+### [🚀 Click here for Azure-Hosted Swagger UI](https://hotelbookingapi20251028232744-bqdufrasbgetdvfx.canadacentral-01.azurewebsites.net/swagger/index.html)
 
 ## How to run
 * Open VS or Rider
